@@ -21,17 +21,15 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        working-directory: ./toolforge
         run: npm install
 
       - name: Build Next.js app
-        working-directory: ./toolforge
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./toolforge/out
+          path: ./out
 
   deploy:
     environment:
