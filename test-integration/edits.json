@@ -1,0 +1,12 @@
+[
+  {
+    "type": "replace",
+    "oldText": "John Smith",
+    "newText": "Jane Doe"
+  },
+  {
+    "type": "replace",
+    "oldText": "January 15, 2024",
+    "newText": "March 24, 2026"
+  }
+]

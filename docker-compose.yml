@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  # ToolsForge Next.js Application
+  toolforge:
+    build:
+      context: ./toolforge
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_APP_NAME: ToolsForge PDF Editor
+      BENTOPDF_URL: http://bentopdf:3000
+      BENTOPDF_API_KEY: ${BENTOPDF_API_KEY:-dev-key-change-in-production}
+    depends_on:
+      - bentopdf
+    networks:
+      - toolforge-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # BentoPDF Service - Modern PDF Processing
+  bentopdf:
+    image: bentoml/bentopdf:latest
+    container_name: bentopdf
+    ports:
+      - "3001:3000"
+    environment:
+      # BentoPDF Configuration
+      LOG_LEVEL: info
+      
+      # Memory & Performance
+      PYTHONUNBUFFERED: "1"
+      
+      # API Settings
+      PORT: "3000"
+      
+      # Features
+      ENABLE_OCR: "true"
+      ENABLE_COMPRESSION: "true"
+      ENABLE_ASYNC: "true"
+      
+      # Timeouts
+      REQUEST_TIMEOUT: "300"
+      
+      # Resource limits
+      MAX_WORKERS: "4"
+    volumes:
+      # Persist processing cache
+      - bentopdf-cache:/home/bentoml/.bentoml
+      # Temporary storage for processing
+      - ./temp/bentopdf:/tmp/bento
+    networks:
+      - toolforge-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: toolforge-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+    depends_on:
+      - toolforge
+      - bentopdf
+    networks:
+      - toolforge-network
+    restart: unless-stopped
+
+networks:
+  toolforge-network:
+    driver: bridge
+
+volumes:
+  bentopdf-cache:
+  toolforge-uploads:

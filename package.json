@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "npm --prefix ./toolforge run dev -- -p 3002",
+    "build": "npm --prefix ./toolforge run build",
+    "start": "npm --prefix ./toolforge run start --",
+    "lint": "npm --prefix ./toolforge run lint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.9.0",
+    "@supabase/supabase-js": "^2.99.1",
+    "qrcode": "^1.5.4"
+  }
+}
