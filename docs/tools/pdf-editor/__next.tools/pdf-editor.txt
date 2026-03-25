@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
-2:I[39756,["/ToolsForge/_next/static/chunks/ff1a16fafef87110.js","/ToolsForge/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
-3:I[37457,["/ToolsForge/_next/static/chunks/ff1a16fafef87110.js","/ToolsForge/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+2:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+3:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
 0:{"buildId":"Tie2PZfZ-smIFtgQVZ4Al","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":[["$","div","l",{"className":"mx-auto w-[min(1120px,92vw)] py-12","children":[["$","div",null,{"className":"h-40 animate-pulse rounded-3xl bg-white/8"}],["$","div",null,{"className":"mt-6 grid gap-5 lg:grid-cols-2","children":[["$","div",null,{"className":"h-130 animate-pulse rounded-2xl bg-white/8"}],["$","div",null,{"className":"h-130 animate-pulse rounded-2xl bg-white/8"}]]}]]}],[],[]],"isPartial":false}
