@@ -5,6 +5,8 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 const CONTACT_EMAIL = "toolsforgesupport@gmail.com";
+const INSTAGRAM_URL = "https://www.instagram.com/_vihaan1.exe/";
+const GITHUB_URL = "https://github.com/Vihaan6119";
 const DESIGNER_NAME = "Vihaan Virendra Ghelani";
 const DESIGNER_EMAIL = "toolsforgesupport@gmail.com";
 
@@ -115,6 +117,22 @@ export default function ContactPage() {
                   className="inline-block rounded-lg bg-cyan-500/20 px-2.5 py-1 text-xs text-cyan-300 hover:bg-cyan-500/30 transition"
                 >
                   Contact Designer
+                </a>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-lg bg-cyan-500/20 px-2.5 py-1 text-xs text-cyan-300 hover:bg-cyan-500/30 transition"
+                >
+                  Follow on Instagram
+                </a>
+                <a
+                  href={GITHUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-lg bg-cyan-500/20 px-2.5 py-1 text-xs text-cyan-300 hover:bg-cyan-500/30 transition"
+                >
+                  View GitHub Profile
                 </a>
               </div>
             </div>
